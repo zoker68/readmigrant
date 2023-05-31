@@ -21,7 +21,7 @@ const form = useForm({
     </div>
 
     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-        <ul role="list" class="divide-y divide-gray-100">
+        <ul role="list" class="divide-y divide-gray-100" v-if="contacts.length > 0">
             <li v-for="contact in contacts" class="flex justify-between gap-x-6 py-5">
                 <div class="flex gap-x-4 w-full">
                     <Link :href="route('book.show',[country.id, contact.book_id])">
@@ -77,6 +77,7 @@ const form = useForm({
                 </div>
             </li>
         </ul>
+        <h2 class="text-xl" v-else>У Вас еще нет запросов на книги.</h2>
     </div>
 
 </template>

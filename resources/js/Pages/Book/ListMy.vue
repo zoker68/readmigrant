@@ -21,7 +21,7 @@ const form = useForm({
     </div>
 
     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-        <ul role="list" class="divide-y divide-gray-100">
+        <ul role="list" class="divide-y divide-gray-100" v-if="books.length > 0">
             <li v-for="book in books" class="flex justify-between gap-x-6 py-5">
                 <div class="flex gap-x-4 w-full">
                     <Link :href="route('book.show',[country.id, book.id])">
@@ -60,6 +60,7 @@ const form = useForm({
                 </div>
             </li>
         </ul>
+        <p v-else>У Вас еще нет книг, которыми Вы хотели бы поделиться.</p>
     </div>
 
 </template>
