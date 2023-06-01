@@ -16,7 +16,7 @@
                 </button>
             </div>
 
-
+            <div v-if="$page.props.auth.user">Вы авторизованы как: {{$page.props.auth.user.name}}</div>
             <UserMenuHeader></UserMenuHeader>
 
         </nav>
