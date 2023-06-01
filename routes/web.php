@@ -52,11 +52,11 @@ Route::prefix('admin')->middleware('admin')->namespace('\App\Http\Controllers\Ad
 //-------------------------END ADMIN---------------------------
 //-------------------------------------------------------------
 
-
+/*
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+*/
 
 require __DIR__ . '/auth.php';
 
@@ -84,7 +84,7 @@ Route::prefix('{country}')
         Route::prefix('book')->group(function () {
 
 
-            Route::middleware('auth')->group(function () {
+            Route::middleware(['auth','verified'])->group(function () {
                 Route::get('/create', \App\Http\Controllers\Book\CreateController::class)->name('book.create');
                 Route::post('/create', \App\Http\Controllers\Book\StoreController::class)->name('book.store');
                 Route::get('/contact', \App\Http\Controllers\Contact\IndexController::class)->name('book.contact.index');
@@ -95,7 +95,7 @@ Route::prefix('{country}')
                         Route::get('/edit', \App\Http\Controllers\Book\EditController::class)->name('book.edit');
                         Route::post('/update', \App\Http\Controllers\Book\UpdateController::class)->name('book.update');
                     });
-                    Route::get('/', \App\Http\Controllers\Book\ShowController::class)->name('book.show');
+
                 });
 
 
@@ -108,6 +108,7 @@ Route::prefix('{country}')
 
             });
 
+            Route::get('/{book}', \App\Http\Controllers\Book\ShowController::class)->name('book.show');
             Route::get('/', \App\Http\Controllers\Book\IndexController::class)->name('book.index');
 
 
