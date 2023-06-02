@@ -183,6 +183,10 @@ const search = useForm({
                             </Link>
 
                         </div>
+                        <div
+                            v-else>
+                            <h2 class="text-center mt-6 text-xl">К сожалению, по заданным критериям, нет доступных книг.</h2>
+                        </div>
 
                         <nav class="mt-5 isolate inline-flex -space-x-px rounded-md shadow-sm " aria-label="Pagination"
                              v-if="usePage().props.books.last_page > 1">
