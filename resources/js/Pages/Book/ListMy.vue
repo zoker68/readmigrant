@@ -58,12 +58,10 @@ const form = useForm({
 
                     </div>
                     <div>
-                        <p class="text-sm font-semibold leading-6 ml-3 align-bottom">
-                            <p @click.prevent="this.$inertia.delete(route('book.delete',[country.id, book.id]));"
-                                  class="cursor-pointer inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
-                                Удалить
-                            </p>
-                        </p>
+                        <button @click.prevent="useForm({}).delete(route('book.delete',[country.id, book.id]));"
+                           class="cursor-pointer inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
+                            Удалить
+                        </button>
                     </div>
                 </div>
             </li>
