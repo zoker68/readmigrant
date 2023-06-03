@@ -94,6 +94,7 @@ Route::prefix('{country}')
                     Route::middleware('can:update,book')->group(function () {
                         Route::get('/edit', \App\Http\Controllers\Book\EditController::class)->name('book.edit');
                         Route::post('/update', \App\Http\Controllers\Book\UpdateController::class)->name('book.update');
+                        Route::delete('/delete', \App\Http\Controllers\Book\DeleteController::class)->name('book.delete');
                     });
 
                 });
