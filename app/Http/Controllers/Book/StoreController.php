@@ -22,7 +22,7 @@ class StoreController extends Controller
         {
             $data['image_main']->store('public/books/fullsize/');
             $filename = $data['image_main']->store('public/books/smallsize/');
-            $thumbnail = Image::make( storage_path("app/".$filename) );
+            $thumbnail = Image::make( storage_path("app/".$filename) )->orientate();
 
             $thumbnail->fit(300, 300);
             $thumbnail->save();

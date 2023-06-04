@@ -59,7 +59,7 @@ class ProfileController extends Controller
         }
 
         $filename = $data['avatar']->store('public/avatar');
-        $thumbnail = Image::make( storage_path("app/".$filename) );
+        $thumbnail = Image::make( storage_path("app/".$filename) )->orientate();
 
         $thumbnail->fit(100, 100);
         $thumbnail->save();
