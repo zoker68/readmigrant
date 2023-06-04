@@ -8,9 +8,13 @@
                 </Link>
             </div>
             <div class="flex  lg:flex-1 center text-center" v-if="country">
-                <span>{{ country.title }}</span>
-                <img class="h-6 border border-1 ml-3 w-auto align-baseline"
-                     :src="`/images/country/flag/icon/${country.id}.png`" alt=""/>
+
+                <span><Link :href="route('country.index')">{{ country.title }}</Link></span>
+                <Link :href="route('country.index')">
+                    <img class="h-6 border border-1 ml-3 w-auto align-baseline"
+                         :src="`/images/country/flag/icon/${country.id}.png`" alt=""/>
+                </Link>
+
             </div>
             <div class="flex lg:hidden">
                 <button type="button"
@@ -79,7 +83,7 @@
                 <div class="mt-6 flow-root">
                     <div class="-my-6 divide-y divide-gray-500/10">
                         <div class="space-y-2 py-6">
-                            <Link :href="route('book.create',country.id)"
+                            <Link :href="route('book.index',country.id)" v-on:click="mobileMenuOpen = false"
                                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Все книги
                             </Link>
@@ -92,14 +96,15 @@
                                                      aria-hidden="true"/>
                                 </DisclosureButton>
                                 <DisclosurePanel class="mt-2 space-y-2">
-                                    <DisclosureButton v-for="genre in genreAll"
-                                                      as="a" :href="route('book.index',[country.id, {'genre[]': genre.id}])"
+                                    <DisclosureButton v-for="genre in genreAll" v-on:click="mobileMenuOpen = false"
+                                                      as="a"
+                                                      :href="route('book.index',[country.id, {'genre[]': genre.id}])"
                                                       class="block rounded-lg py-0 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                         {{ genre.title }}
                                     </DisclosureButton>
                                 </DisclosurePanel>
                             </Disclosure>
-                            <Link :href="route('book.create',country.id)"
+                            <Link :href="route('book.create',country.id)" v-on:click="mobileMenuOpen = false"
                                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Добавить книгу
                             </Link>
