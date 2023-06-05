@@ -179,13 +179,17 @@ const search = useForm({
                                 </div>
                                 <h3 class="mt-4 text-sm text-gray-700">{{ book.title }}</h3>
                                 <h4 class="mt-0 text-sm text-gray-700">{{ book.author }}</h4>
-                                <h4 class="mt-0 text-sm text-gray-700">В городе: "{{ book.city }}"</h4>
+                                <h4 class="mt-0 text-sm text-gray-700 flex">В городе: "{{ book.city }}" <img
+                                    class="h-4 border border-1 ml-1 w-auto align-baseline"
+                                    :src="`/images/country/flag/icon/${book.country_id}.png`"
+                                    :alt="book.countryTitle" :title="book.countryTitle"/></h4>
                             </Link>
 
                         </div>
                         <div
                             v-else>
-                            <h2 class="text-center mt-6 text-xl">К сожалению, по заданным критериям, нет доступных книг.</h2>
+                            <h2 class="text-center mt-6 text-xl">К сожалению, по заданным критериям, нет доступных
+                                книг.</h2>
                         </div>
 
                         <nav class="mt-5 isolate inline-flex -space-x-px rounded-md shadow-sm " aria-label="Pagination"

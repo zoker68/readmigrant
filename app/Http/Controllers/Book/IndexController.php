@@ -16,11 +16,12 @@ class IndexController extends Controller
         $searchData = $request->validated();
 
 
-        $books = DB::table('books')->select('books.id', 'title', 'author', 'image_main', 'city');
+        $books = DB::table('books')->select('books.id', 'books.title as title', 'author', 'image_main', 'city', 'countries.title AS countryTitle', 'country_id');
 
+        $books->leftJoin('countries', 'countries.id', '=', 'books.country_id');
         if ($searchData) {
             if (isset($searchData['genre'])) {
-                $books = $books->leftJoin('book_genres','books.id','=','book_genres.book_id')
+                $books = $books->leftJoin('book_genres', 'books.id', '=', 'book_genres.book_id')
                     ->whereIn('book_genres.genre_id', $searchData['genre']);
 
             }
@@ -44,6 +45,7 @@ class IndexController extends Controller
 
 
         $books = $books->paginate(12)->appends(request()->query());
+
 
         return inertia('Book/Index', compact('country', 'books', 'searchData'));
     }
