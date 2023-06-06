@@ -16,7 +16,7 @@ class AdminPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->user() or auth()->user()->id != 1) {
+        if (auth()->user()->id != 1) {
             return redirect(RouteServiceProvider::HOME);
         } else {
             return $next($request);
