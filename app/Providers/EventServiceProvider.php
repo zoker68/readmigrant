@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\Contact\BookRequest;
+use App\Events\Contact\NewMessageEvent;
+use App\Listeners\NewMessageEmailNotificationListener;
+use App\Listeners\SendOwnerNewBookRequestEmailNotificationListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +22,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        BookRequest::class => [
+            SendOwnerNewBookRequestEmailNotificationListener::class,
+        ],
+        NewMessageEvent::class => [
+            NewMessageEmailNotificationListener::class
+        ]
+
     ];
 
     /**

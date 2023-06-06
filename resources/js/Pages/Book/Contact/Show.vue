@@ -23,7 +23,7 @@ const form = useForm({
 
     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
         <h2 class="text-xl">Новое сообщение</h2>
-        <form @submit.prevent="form.post(route('book.contact.store',[country.id, bookData.id])); form.message = '';" class="mt-6 space-y-6">
+        <form @submit.prevent="form.post(route('book.contact.update',[country.id, bookData.id, contact.id])); form.message = '';" class="mt-6 space-y-6">
 
 
                 <div >
@@ -93,6 +93,7 @@ export default {
         'bookData',
         'messages',
         'country',
+        'contact'
 
     ],
 

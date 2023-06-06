@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Contact;
 
+use App\Events\Contact\BookRequest;
+use App\Events\Contact\NewMessageEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\StoreRequest;
 use App\Models\Book;
@@ -11,16 +13,25 @@ use App\Models\Message;
 
 class StoreController extends Controller
 {
-    public function __invoke(Country $country, Book $book, StoreRequest $request)
+    public function __invoke(Country $country, Book $book, StoreRequest $request, $contact_id = null)
     {
 
-        $contact = Contact::firstOrCreate(
-            [
-                'from_user_id' => auth()->user()->id,
-                'to_user_id' => $book->user_id,
-                'book_id' => $book->id,
-            ]
-        );
+        if ($contact_id) {
+
+            $contact = Contact::find($contact_id);
+            $this->authorize('send', $contact);
+
+        } else {
+            $contact = Contact::firstOrCreate(
+                [
+                    'from_user_id' => auth()->user()->id,
+                    'to_user_id' => $book->user_id,
+                    'book_id' => $book->id,
+                ]
+            );
+        }
+
+
 
         $data = $request->validated();
 
@@ -28,6 +39,13 @@ class StoreController extends Controller
         $data['contact_id'] = $contact->id;
 
         Message::create($data);
+
+        if ($contact->wasRecentlyCreated)
+        {
+            event(new BookRequest($book));
+        } else {
+            event(new NewMessageEvent($book, $contact));
+        }
 
         return redirect()->route('book.contact.show', [$country->id, $book->id]);
     }

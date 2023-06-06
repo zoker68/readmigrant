@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Book;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\StoreRequest;
-use App\Models\Author;
 use App\Models\Book;
 use App\Models\Country;
 use Intervention\Image\Facades\Image;

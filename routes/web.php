@@ -103,6 +103,7 @@ Route::prefix('{country}')
                 Route::prefix('/{book}/contact')->group(function () {
                     Route::get('/create', \App\Http\Controllers\Contact\CreateController::class)->name('book.contact.create');
                     Route::get('/', \App\Http\Controllers\Contact\ShowController::class)->name('book.contact.show');
+                    Route::post('/{contact}', \App\Http\Controllers\Contact\StoreController::class)->name('book.contact.update');
                     Route::post('/', \App\Http\Controllers\Contact\StoreController::class)->name('book.contact.store');
 
                 });
