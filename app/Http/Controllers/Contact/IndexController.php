@@ -15,17 +15,22 @@ class IndexController extends Controller
     public function __invoke(Country $country)
     {
 
-/*
-        $contacts = DB::table('contacts')
-            ->leftJoin('books','books.id','=','contacts.book_id')
-            ->where(
-            function (Builder $query) {
-                $query->where('from_user_id', auth()->user()->id);
-                $query->orWhere('to_user_id', auth()->user()->id);
-            })
-            ->get();*/
+        /*
+                $contacts = DB::table('contacts')
+                    ->leftJoin('books','books.id','=','contacts.book_id')
+                    ->where(
+                    function (Builder $query) {
+                        $query->where('from_user_id', auth()->user()->id);
+                        $query->orWhere('to_user_id', auth()->user()->id);
+                    })
+                    ->get();*/
 
-        $contacts = Contact::with('user_from')->with('user_to')->with('book')->orderByDesc('created_at')->get();
+        $contacts = Contact::with('user_from')->with('user_to')->with('book')->orderByDesc('created_at')
+            ->where(
+               'from_user_id', auth()->user()->id
+            )->orWhere(
+                'to_user_id', auth()->user()->id
+            )->get();
 
         $contacts = ContactsResource::collection($contacts)->resolve();
 
