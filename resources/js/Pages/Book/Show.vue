@@ -100,7 +100,7 @@ import {Link} from "@inertiajs/vue3";
 
                                 <template v-if="bookData.is_published">
                                     <CheckIcon class="h-6 w-6 flex-none text-green-600 mr-1" aria-hidden="true"/>
-                                    Книга сейчас доступна!
+                                    Книга сейчас доступна! Вы можете написать владельцу запрос.
                                 </template>
                                 <template v-else>
                                     <XMarkIcon class="h-6 w-6 flex-none text-red-600 mr-1" aria-hidden="true"/>

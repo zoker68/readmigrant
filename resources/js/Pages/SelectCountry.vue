@@ -1,10 +1,33 @@
+<script setup>
+import {useForm, usePage} from "@inertiajs/vue3";
+
+import {Head, Link} from "@inertiajs/vue3";
+
+const searchData = usePage().props.searchData;
+
+const search = useForm({
+    search: searchData.search
+})
+</script>
 <template>
     <Head title="Выберите страну нахождения"/>
 
     <div class="bg-white">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Выберите страну</h2>
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900 flex"> Выберите страну
+            <form @change.prevent="search.get(route('country.index'))"
+                  @submit.prevent="search.get(route('country.index'))"
+                  class="hidden lg:block">
+                <div class="relative ml-4">
+                    <input type="search" id="default-search"
+                           v-model="search.search"
+                           class="block w-full p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Искать по названию">
+                </div>
+            </form>
+        </h2>
 
         <div class="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 max-w-100">
+
             <div v-for="country in countries" class="group w-56">
 
                 <div class="mt-2">
@@ -76,11 +99,8 @@
     </div>
 </template>
 
-<script setup>
-import SelectCountry from "@/Layouts/SelectCountry.vue";
-import {Head, Link} from "@inertiajs/vue3";
-</script>
 <script>
+import SelectCountry from "@/Layouts/SelectCountry.vue";
 export default {
     name: "SelectCountry",
 

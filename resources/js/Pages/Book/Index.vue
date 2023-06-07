@@ -177,7 +177,7 @@ const search = useForm({
                                         class="h-full w-full object-cover object-center group-hover:opacity-75"
                                     />
                                 </div>
-                                <h3 class="mt-4 text-sm text-gray-700">{{ book.title }}</h3>
+                                <h3 class="mt-4 text-xl text-gray-900">{{ book.title }}</h3>
                                 <h4 class="mt-0 text-sm text-gray-700">{{ book.author }}</h4>
                                 <h4 class="mt-0 text-sm text-gray-700 flex">В городе: "{{ book.city }}" <img
                                     class="h-4 border border-1 ml-1 w-auto align-baseline"
