@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\UpdateRequest;
 use App\Models\Book;
 use App\Models\Country;
+use App\Services\Book\BookServices;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class UpdateController extends Controller
+class UpdateController extends BookServices
 {
     public function __invoke(Country $country, Book $book, UpdateRequest $request)
     {
@@ -27,15 +28,7 @@ class UpdateController extends Controller
                 Storage::delete('public/books/fullsize/' . $book['image_main']);
             }
 
-            $data['image_main']->store('public/books/fullsize/');
-            $filename = $data['image_main']->store('public/books/smallsize/');
-            $thumbnail = Image::make( storage_path("app/".$filename) );
-
-            $thumbnail->fit(300, 300);
-            $thumbnail->save();
-
-            $filename = explode('/',$filename);
-            $data['image_main'] = end($filename);
+            $data['image_main'] = $this->uploadBookImage($data['image_main']);
         }
 
         $book->update($data);

@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\StoreRequest;
 use App\Models\Book;
 use App\Models\Country;
+use App\Services\Book\BookServices;
 use Intervention\Image\Facades\Image;
 
-class StoreController extends Controller
+class StoreController extends BookServices
 {
     public function __invoke(Country $country, StoreRequest $request)
     {
@@ -17,25 +18,17 @@ class StoreController extends Controller
         $genre = $data['genre'];
         unset($data['genre']);
 
-        if (isset($data['image_main']))
-        {
-            $data['image_main']->store('public/books/fullsize/');
-            $filename = $data['image_main']->store('public/books/smallsize/');
-            $thumbnail = Image::make( storage_path("app/".$filename) )->orientate();
-
-            $thumbnail->fit(300, 300);
-            $thumbnail->save();
-
-            $filename = explode('/',$filename);
-            $data['image_main'] = end($filename);
+        if (isset($data['image_main'])) {
+            $data['image_main'] = $this->uploadBookImage($data['image_main']);
         }
 
         $data['user_id'] = auth()->user()->id;
+
         $book = Book::create($data);
 
 
         $book->genres()->attach($genre);
 
-        return redirect()->route('book.index',$country->id);
+        return redirect()->route('book.index', $country->id);
     }
 }
