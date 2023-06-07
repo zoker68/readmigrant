@@ -55,9 +55,6 @@
                     </transition>
                 </Popover>
 
-                <Link :href="route('book.create',country.id)" class="text-sm font-semibold leading-6 text-gray-900">
-                    Добавить книгу
-                </Link>
             </PopoverGroup>
 
 
@@ -104,10 +101,6 @@
                                     </DisclosureButton>
                                 </DisclosurePanel>
                             </Disclosure>
-                            <Link :href="route('book.create',country.id)" v-on:click="mobileMenuOpen = false"
-                                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                Добавить книгу
-                            </Link>
                         </div>
                     </div>
                 </div>
@@ -120,11 +113,8 @@
             </div>
     </main>
 
-    <footer>
-        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <p>© 2023 ReadMigrant. Все права защищены.</p>
-        </div>
-    </footer>
+    <FooterLayout></FooterLayout>
+
 </template>
 
 <script setup>
@@ -144,6 +134,7 @@ import {Bars3Icon, XMarkIcon,} from '@heroicons/vue/24/outline'
 import {ChevronDownIcon} from '@heroicons/vue/20/solid'
 import {Link} from "@inertiajs/vue3";
 import UserMenuHeader from "@/Layouts/UserMenuHeader.vue";
+import FooterLayout from "@/Layouts/FooterLayout.vue";
 
 
 const mobileMenuOpen = ref(false)

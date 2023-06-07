@@ -69,16 +69,14 @@
             </div>
         </section>
     </div>
-    <footer>
-        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <p>© 2023 ReadMigrant. Все права защищены.</p>
-        </div>
-    </footer>
+
+    <FooterLayout></FooterLayout>
 </template>
 
 <script setup>
 import {Link} from "@inertiajs/vue3";
 import UserMenuHeader from "@/Layouts/UserMenuHeader.vue";
+import FooterLayout from "@/Layouts/FooterLayout.vue";
 </script>
 
 <script>
