@@ -162,7 +162,6 @@ flex justify-center w-full px-4 transition bg-white border-2 border-gray-300 bor
                         class="mt-1 block w-full"
                         v-model="form.city"
                         required
-                        autofocus
                         autocomplete="city"
                     />
 
