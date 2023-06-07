@@ -73,7 +73,6 @@ const handleUpload = (e) => {
                         class="mt-1 block w-full"
                         v-model="form.author"
                         required
-                        autofocus
                         autocomplete="author"
                     />
 
