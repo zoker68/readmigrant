@@ -23,6 +23,7 @@ class ContactsResource extends JsonResource
             'book_id' => $this->book_id,
 
             'date' => $this->created_at->diffForHumans(),
+            'id' => $this->id,
         ];
 
         if ($this->to_user_id == auth()->user()->id) {
