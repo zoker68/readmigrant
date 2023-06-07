@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Book;
+use App\Models\Contact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -19,9 +20,10 @@ class NewBookRequestMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(Book $book)
+    public function __construct($event)
     {
-        $this->data['book'] = $book;
+        $this->data['book'] = $event->book;
+        $this->data['contact'] = $event->contact;
         $this->data['url'] = $this->getUrl();
     }
 
@@ -31,7 +33,7 @@ class NewBookRequestMail extends Mailable
             'book.contact.show',
             [
                 $this->data['book']->user->country_id,
-                $this->data['book']->id
+                $this->data['contact']->id
             ]
         );
     }

@@ -21,6 +21,7 @@ class NewMessageNotificationMail extends Mailable
     public function __construct($event)
     {
         $this->data['book'] = $event->book;
+        $this->data['contact'] = $event->contact;
         $this->data['userNotificate'] = $event->userNotificate;
         $this->data['url'] = $this->getUrl();
     }
@@ -31,7 +32,7 @@ class NewMessageNotificationMail extends Mailable
             'book.contact.show',
             [
                 $this->data['userNotificate']->country_id,
-                $this->data['book']->id
+                $this->data['contact']->id
             ]
         );
     }

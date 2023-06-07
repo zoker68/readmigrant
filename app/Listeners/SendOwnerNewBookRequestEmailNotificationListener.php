@@ -20,6 +20,6 @@ class SendOwnerNewBookRequestEmailNotificationListener
      */
     public function handle(object $event): void
     {
-        Mail::to($event->book->user->email)->send(new NewBookRequestMail($event->book));
+        Mail::to($event->book->user->email)->send(new NewBookRequestMail($event));
     }
 }

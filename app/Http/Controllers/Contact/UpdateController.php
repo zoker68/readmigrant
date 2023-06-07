@@ -11,19 +11,12 @@ use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Message;
 
-class StoreController extends Controller
+class UpdateController extends Controller
 {
-    public function __invoke(Country $country, Book $book, StoreRequest $request)
+    public function __invoke(Country $country, Contact $contact, StoreRequest $request)
     {
 
-        $contact = Contact::firstOrCreate(
-            [
-                'from_user_id' => auth()->user()->id,
-                'to_user_id' => $book->user_id,
-                'book_id' => $book->id,
-            ]
-        );
-
+        $this->authorize('mainCheck', $contact);
 
         $data = $request->validated();
 
@@ -32,7 +25,9 @@ class StoreController extends Controller
 
         Message::create($data);
 
-        event(new BookRequest($book, $contact));
+        $book = Book::find($contact->id);
+
+        event(new NewMessageEvent($book, $contact));
 
         return redirect()->route('book.contact.show', [$country->id, $contact->id]);
     }

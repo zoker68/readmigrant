@@ -22,7 +22,8 @@ class BookRequest
      * Create a new event instance.
      */
     public function __construct(
-        public Book $book
+        public Book $book,
+        public Contact $contact,
     )
     {
 

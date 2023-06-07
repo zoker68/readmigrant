@@ -9,21 +9,12 @@ use App\Models\Contact;
 use App\Models\Country;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
+use Inertia\Response;
 
 class IndexController extends Controller
 {
-    public function __invoke(Country $country)
+    public function __invoke(Country $country): Response
     {
-
-        /*
-                $contacts = DB::table('contacts')
-                    ->leftJoin('books','books.id','=','contacts.book_id')
-                    ->where(
-                    function (Builder $query) {
-                        $query->where('from_user_id', auth()->user()->id);
-                        $query->orWhere('to_user_id', auth()->user()->id);
-                    })
-                    ->get();*/
 
         $contacts = Contact::with('user_from')->with('user_to')->with('book')->orderByDesc('created_at')
             ->where(

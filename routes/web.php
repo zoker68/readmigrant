@@ -80,14 +80,24 @@ Route::prefix('{country}')
         //----------------PROFILE END-------------------
 
 
+        //----------------Contact-------------------
+        Route::prefix('/contact')->group(function () {
+            Route::get('/{book}/create', \App\Http\Controllers\Contact\CreateController::class)->name('book.contact.create');
+            Route::get('/{contact}', \App\Http\Controllers\Contact\ShowController::class)->name('book.contact.show');
+            Route::patch('/{contact}', \App\Http\Controllers\Contact\UpdateController::class)->name('book.contact.update');
+            Route::post('/{book}', \App\Http\Controllers\Contact\StoreController::class)->name('book.contact.store');
+            Route::get('/', \App\Http\Controllers\Contact\IndexController::class)->name('book.contact.index');
+
+        });
+
+
         //----------------BOOK-------------------
         Route::prefix('book')->group(function () {
 
 
-            Route::middleware(['auth','verified'])->group(function () {
+            Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/create', \App\Http\Controllers\Book\CreateController::class)->name('book.create');
                 Route::post('/create', \App\Http\Controllers\Book\StoreController::class)->name('book.store');
-                Route::get('/contact', \App\Http\Controllers\Contact\IndexController::class)->name('book.contact.index');
                 Route::get('/mybook', \App\Http\Controllers\Book\MyBookController::class)->name('book.my');
 
                 Route::prefix('/{book}')->group(function () {
@@ -99,14 +109,6 @@ Route::prefix('{country}')
 
                 });
 
-
-                Route::prefix('/{book}/contact')->group(function () {
-                    Route::get('/create', \App\Http\Controllers\Contact\CreateController::class)->name('book.contact.create');
-                    Route::get('/', \App\Http\Controllers\Contact\ShowController::class)->name('book.contact.show');
-                    Route::post('/{contact}', \App\Http\Controllers\Contact\StoreController::class)->name('book.contact.update');
-                    Route::post('/', \App\Http\Controllers\Contact\StoreController::class)->name('book.contact.store');
-
-                });
 
             });
 
