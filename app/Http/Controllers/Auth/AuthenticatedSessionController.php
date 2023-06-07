@@ -32,11 +32,9 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-
-
         $request->session()->regenerate();
 
-        return redirect()->route('book.index', auth()->user()->country_id);
+        return redirect()->intended();
     }
 
     /**
