@@ -23,8 +23,8 @@ const form = useForm({
     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
         <div class="text-center">
             <Link :href="route('book.create',country.id)"
-              class="mb-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xl text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-            Добавить книгу для обмена
+                  class="mb-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xl text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                Добавить книгу для обмена
             </Link>
         </div>
         <ul role="list" class="divide-y divide-gray-100" v-if="books.length > 0">
@@ -65,7 +65,7 @@ const form = useForm({
                     </div>
                     <div>
                         <button @click.prevent="useForm({}).delete(route('book.delete',[country.id, book.id]));"
-                           class="cursor-pointer inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
+                                class="cursor-pointer inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
                             Удалить
                         </button>
                     </div>
