@@ -1,13 +1,13 @@
 <template>
     <Head title="Выберите страну нахождения" />
     <div class="bg-white">
-        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div class="mx-auto max-w-2xl px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
             <h2 class="text-2xl font-bold tracking-tight text-gray-900">Выберите страну</h2>
 
-            <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 max-w-100">
-                <div v-for="country in countries" class="group  w-64">
+            <div class="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 max-w-100">
+                <div v-for="country in countries" class="group w-64">
 
-                    <div class="mt-4">
+                    <div class="mt-3">
                             <h3 class="text-gray-700 text-center">
                                 <Link :href="route('book.index',country.id)">
                                     <span aria-hidden="true" class="inset-0" />

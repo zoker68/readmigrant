@@ -8,7 +8,7 @@
                 </Link>
             </div>
 
-            <div v-if="$page.props.auth.user">Вы авторизованы как: {{$page.props.auth.user.name}}</div>
+            <div v-if="$page.props.auth.user">Вы авторизованы как: {{ $page.props.auth.user.name }}</div>
             <UserMenuHeader></UserMenuHeader>
 
         </nav>
@@ -19,28 +19,66 @@
             <slot/>
         </div>
     </main>
+    <div class="mx-auto max-w-7xl py-6 rounded-3xl ring-1 ring-gray-200">
+        <section>
+            <div class=" sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">Ваш источник вдохновения и обмена
+                    книгами</h2>
+                <p class="mt-4 text-gray-500">ReadMigrant - это платформа, которая объединяет любителей чтения и
+                    предлагает уникальную возможность временного обмена книгами с другими участниками сообщества.</p>
+
+                <p class="mt-4 text-gray-500">У нас вы сможете найти новые увлекательные книги и поделиться своими
+                    сокровищами мировой литературы. Вы можете временно обменяться своими любимыми экземплярами с другими
+                    членами нашего сообщества.</p>
+
+                <p class="mt-4 text-gray-500">Мы верим, что книги имеют особую силу, способную пробуждать в нас новые
+                    идеи, погружать в другие миры и расширять наши горизонты. Через временный обмен книгами на
+                    ReadMigrant вы можете не только насладиться чтением новых произведений, но и установить ценные
+                    контакты с другими книголюбами, обсудить прочитанное и разделить свои впечатления.</p>
+
+                <p class="mt-4 text-gray-500">Присоединяйтесь к нашему сообществу, где мы вместе создаем уникальную
+                    атмосферу обмена книгами и вдохновляющих литературных открытий.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">О нас</h2>
+                <p class="mt-4 text-gray-500">Я энтузиаст, который разделяют любовь к чтению и стремится
+                    создать дружелюбное и вдохновляющее онлайн-сообщество. Моя цель - сделать чтение доступным и
+                    увлекательным, а также позволить людям делиться своими любимыми книгами, обмениваться опытом и
+                    находить новых друзей с общими интересами.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">Обмен книгами</h2>
+                <p class="mt-4 text-gray-500">Чтобы начать обмен книгами, просто создайте аккаунт на нашем сайте,
+                    загрузите информацию о доступных
+                    книгах или найдите интересующие вас книги других участников. Мы поощряем взаимовыгодные обмены и
+                    помогаем создавать ценные литературные связи.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">Свяжитесь с нами</h2>
+                <p class="mt-4 text-gray-500">Если у вас есть вопросы, предложения или пожелания, не стесняйтесь
+                    связаться с нами. Мы всегда готовы помочь и выслушать вас.</p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <p>© 2023 ReadMigrant. Все права защищены.</p>
+        </div>
+    </footer>
 </template>
 
 <script setup>
-import {ref} from 'vue'
-import {
-    Dialog,
-    DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Popover,
-    PopoverButton,
-    PopoverGroup,
-    PopoverPanel
-} from '@headlessui/vue'
-import {Bars3Icon, XMarkIcon,} from '@heroicons/vue/24/outline'
-import {ChevronDownIcon} from '@heroicons/vue/20/solid'
 import {Link} from "@inertiajs/vue3";
 import UserMenuHeader from "@/Layouts/UserMenuHeader.vue";
-
-
-const mobileMenuOpen = ref(false)
 </script>
 
 <script>
