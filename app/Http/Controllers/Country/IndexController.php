@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Country\SearchRequest;
 use App\Models\Country;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Inertia\Response;
 
 class IndexController extends Controller
@@ -18,7 +16,7 @@ class IndexController extends Controller
 
         $searchData['search'] = $searchData['search'] ?? '';
 
-        $countries = Country::where('title', 'like', '%' . $searchData['search'] . '%')->orderBy('order')->get();
+        $countries = Country::where('title', 'like', '%' . $searchData['search'] . '%')->orderBy('title')->get();
 
         return inertia('SelectCountry', compact('countries', 'searchData'));
     }

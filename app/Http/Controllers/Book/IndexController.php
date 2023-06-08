@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Book;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\SearchRequest;
-use App\Models\Book;
 use App\Models\Country;
+use App\Models\Genre;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
@@ -45,8 +45,9 @@ class IndexController extends Controller
 
 
         $books = $books->paginate(12)->appends(request()->query());
+        $genreAll = Genre::all();
 
 
-        return inertia('Book/Index', compact('country', 'books', 'searchData'));
+        return inertia('Book/Index', compact('country', 'books', 'searchData', 'genreAll'));
     }
 }

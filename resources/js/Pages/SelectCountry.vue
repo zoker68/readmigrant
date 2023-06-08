@@ -1,7 +1,5 @@
 <script setup>
-import {useForm, usePage} from "@inertiajs/vue3";
-
-import {Head, Link} from "@inertiajs/vue3";
+import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
 
 const searchData = usePage().props.searchData;
 
@@ -13,18 +11,16 @@ const search = useForm({
     <Head title="Выберите страну нахождения"/>
 
     <div class="bg-white">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900 flex"> Выберите страну
-            <form @change.prevent="search.get(route('country.index'))"
-                  @submit.prevent="search.get(route('country.index'))"
-                  class="hidden lg:block">
-                <div class="relative ml-4">
-                    <input type="search" id="default-search"
-                           v-model="search.search"
-                           class="block w-full p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           placeholder="Искать по названию">
-                </div>
-            </form>
-        </h2>
+        <form @change.prevent="search.get(route('country.index'))"
+              @submit.prevent="search.get(route('country.index'))">
+            <div class="relative lg:ml-4 w-full lg:flex">
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900 lg:w-1/4">Выберите страну</h2>
+                <input type="search" id="default-search"
+                       v-model="search.search"
+                       class="block w-3/4 p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Искать по названию">
+            </div>
+        </form>
 
         <div class="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 max-w-100">
 
@@ -50,9 +46,7 @@ const search = useForm({
     <div class="mx-auto mt-3 max-w-7xl py-6 rounded-3xl ring-1 ring-gray-200">
         <section>
             <div class=" sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">Ваш источник вдохновения и обмена
-                    книгами</h2>
-                <p class="mt-4 text-gray-500">ReadMigrant - это платформа, которая объединяет любителей чтения и
+               <p class="mt-4 text-gray-500">ReadMigrant - это платформа, которая объединяет любителей чтения и
                     предлагает уникальную возможность временного обмена книгами с другими участниками сообщества.</p>
 
                 <p class="mt-4 text-gray-500">У нас вы сможете найти новые увлекательные книги и поделиться своими
@@ -70,7 +64,7 @@ const search = useForm({
         </section>
 
         <section>
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="py-3 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">О нас</h2>
                 <p class="mt-4 text-gray-500">Я энтузиаст, который разделяют любовь к чтению и стремится
                     создать дружелюбное и вдохновляющее онлайн-сообщество. Моя цель - сделать чтение доступным и
@@ -80,7 +74,7 @@ const search = useForm({
         </section>
 
         <section>
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="py-3 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">Обмен книгами</h2>
                 <p class="mt-4 text-gray-500">Чтобы начать обмен книгами, просто создайте аккаунт на нашем сайте,
                     загрузите информацию о доступных
@@ -90,7 +84,7 @@ const search = useForm({
         </section>
 
         <section>
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="py-3 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-xl">Свяжитесь с нами</h2>
                 <p class="mt-4 text-gray-500">Если у вас есть вопросы, предложения или пожелания, не стесняйтесь
                     связаться с нами. Мы всегда готовы помочь и выслушать вас.</p>
@@ -101,6 +95,7 @@ const search = useForm({
 
 <script>
 import SelectCountry from "@/Layouts/SelectCountry.vue";
+
 export default {
     name: "SelectCountry",
 
