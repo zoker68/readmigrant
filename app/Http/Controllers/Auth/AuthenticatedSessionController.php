@@ -34,7 +34,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended();
+        if (session()->get('url.intended'))
+            return redirect()->intended();
+        else
+            return redirect()->route('book.index', auth()->user()->country_id);
     }
 
     /**
