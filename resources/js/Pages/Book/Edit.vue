@@ -16,7 +16,7 @@ const form = useForm({
     author: book.author,
     genre: book.genres,
     description: book.description,
-    image_main: book.image_main,
+    image_main: '',
     country_id: book.country_id,
     city: book.city,
     conditions: book.conditions,

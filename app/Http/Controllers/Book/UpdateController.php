@@ -21,21 +21,21 @@ class UpdateController extends BookServices
         $genre = $data['genre'];
         unset($data['genre']);
 
-        if (isset($data['image_main']))
-        {
+        if ($data['image_main']) {
             if ($book['image_main']) {
                 Storage::delete('public/books/smallsize/' . $book['image_main']);
                 Storage::delete('public/books/fullsize/' . $book['image_main']);
             }
 
             $data['image_main'] = $this->uploadBookImage($data['image_main']);
+        } else {
+            unset($data['image_main']);
         }
 
         $book->update($data);
 
-
         $book->genres()->sync($genre);
 
-        return redirect()->route('book.my',$country->id);
+        return redirect()->route('book.my', $country->id);
     }
 }
