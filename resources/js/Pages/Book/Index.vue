@@ -24,6 +24,7 @@ const paginateLink = usePage().props.books.links;
 
 const search = useForm({
     search: searchData.search,
+    searchCity: searchData.searchCity,
     genre: searchData.genre || [],
 })
 </script>
@@ -65,10 +66,14 @@ const search = useForm({
                                   @submit.prevent="search.get(route('book.index',country.id))"
                                   class="mt-4 border-t border-gray-200">
                                 <div class="relative mb-4">
-                                    <input type="search" id="default-search"
+                                    <input type="search"
                                            v-model="search.search"
                                            class="block w-full p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                           placeholder="Искать по названию / автору" required>
+                                           placeholder="Искать по названию / автору">
+                                    <input type="searchCity"
+                                           v-model="search.searchCity"
+                                           class="block w-full mt-1 p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                           placeholder="Искать по городу">
                                     <button type="submit"
                                             class="text-white absolute right-1 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         Искать
@@ -134,6 +139,10 @@ const search = useForm({
                                    v-model="search.search"
                                    class="block w-full p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                    placeholder="Искать по названию / автору">
+                            <input type="searchCity"
+                                   v-model="search.searchCity"
+                                   class="block w-full mt-1 p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                   placeholder="Искать по городу">
                         </div>
 
 

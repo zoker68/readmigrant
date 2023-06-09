@@ -22,11 +22,11 @@ const search = useForm({
             </div>
         </form>
 
-        <div class="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 max-w-100">
+        <div class="grid grid-cols-2 gap-x-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8 max-w-100">
 
-            <div v-for="country in countries" class="group w-56">
+            <div v-for="country in countries" class="group w-44">
 
-                <div class="mt-2">
+                <div class="mt-4">
                     <h3 class="text-gray-800 text-center">
                         <Link :href="route('book.index',country.id)">
                             <span aria-hidden="true" class="inset-0"/>
@@ -37,7 +37,7 @@ const search = useForm({
                 <div class="group-hover:opacity-75">
                     <Link :href="route('book.index',country.id)">
                         <img :src="`images/country/flag/image/${country.id}.png`" :alt="country.title"
-                             class="border-2 h-36 w-56"/>
+                             class="border-2 h-28 w-44"/>
                     </Link>
                 </div>
             </div>

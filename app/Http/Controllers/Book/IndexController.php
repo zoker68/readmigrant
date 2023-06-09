@@ -28,9 +28,12 @@ class IndexController extends Controller
 
             if (isset($searchData['search'])) {
                 $books = $books->where(function (Builder $query) use ($searchData) {
-                    $query->where('title', 'like', '%' . $searchData['search'] . '%');
+                    $query->where('books.title', 'like', '%' . $searchData['search'] . '%');
                     $query->orWhere('author', 'like', '%' . $searchData['search'] . '%');
                 });
+            }
+            if (isset($searchData['searchCity'])) {
+                $books = $books->where('city', 'like', '%' . $searchData['searchCity'] . '%');
             }
         }
 

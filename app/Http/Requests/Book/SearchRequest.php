@@ -23,6 +23,7 @@ class SearchRequest extends FormRequest
     {
         return [
             'search' => ['nullable','string'],
+            'searchCity' => ['nullable','string'],
             'genre' => ['nullable','array'],
             'genre.*' => ['int','exists:genres,id'],
 
